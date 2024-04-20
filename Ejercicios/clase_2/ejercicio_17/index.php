@@ -2,6 +2,7 @@
 
 /*
     Aplicación No 17 (Auto)
+    Esteban M. Quiroz
     Realizar una clase llamada “Auto” que posea los siguientes atributos
 
     privados: _color (String)
@@ -37,6 +38,54 @@
     ● Utilizar el método de clase “MostrarAuto” para mostrar cada los objetos impares (1, 3, 5)
 
  */
+    include_once "./Auto.php";
 
+    //dos autos con el mismo precio
+    $autoUno = new Auto("Fiat","Rojo");
+    $autoDos = new Auto("Fiat","Azul");
+
+    // dos objetos “Auto” de la misma marca, mismo color y distinto precio.
+    $autoTres = new Auto("Fiat","Rojo",13.1);
+    $autoCuatro = new Auto("Fiat","Rojo",14.1);
+
+    //un objeto “Auto” utilizando la sobrecarga restante.
+    $autoQuinto = new Auto("Ford","gris",165.1,"12-2-2023");
+    $mensaje;
+
+
+    //Utilizar el método “AgregarImpuesto” en los últimos tres objetos, agregando $ 1500 al atributo precio.
+    $autoTres->AgregarImpuestos(1500);
+    $autoCuatro->AgregarImpuestos(1500);
+    $autoQuinto->AgregarImpuestos(1500);
+
+    //Obtener el importe sumado del primer objeto “Auto” más el segundo y mostrar el resultado obtenido.
+    $mensaje = " El precio sumado es: " . Auto::Add($autoUno,$autoDos) . "</br>";
+
+
+    //Comparar el primer “Auto” con el segundo y quinto objeto e informar si son iguales o no.
+    
+    if($autoUno->Equals($autoDos)){
+        $mensaje = $mensaje . " El auto Uno es igual al auto Dos " . "</br>";
+    }else{
+        $mensaje = $mensaje . " El auto Uno es distinto al auto Dos " . "</br>";
+    }
+
+
+    if($autoUno->Equals($autoQuinto)){
+        $mensaje = $mensaje . " El auto Uno es igual al quinto auto " . "</br>";
+    }else{
+        $mensaje =  $mensaje . " El auto Uno es distinto al quinto auto " . "</br>";
+    }
+
+    echo $mensaje;
+
+
+    //Utilizar el método de clase “MostrarAuto” para mostrar cada los objetos impares (1, 3, 5)
+
+
+
+    Auto::MostrarAuto($autoUno);
+    Auto::MostrarAuto($autoTres);
+    Auto::MostrarAuto($autoQuinto);
 
 ?>
